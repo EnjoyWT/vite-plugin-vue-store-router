@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-vue-store-router",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "vue router和store根据对应目录自动生成插件",
   "main": "./src/index.js",
   "scripts": {
