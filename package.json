@@ -1,0 +1,28 @@
+{
+  "name": "vite-plugin-vue-store-router",
+  "version": "0.0.1",
+  "description": "vue router和store根据对应目录自动生成插件",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnjoyWT/vite-plugin-vue-store-router.git"
+  },
+  "keywords": [
+    "vite",
+    "vue",
+    "store",
+    "router"
+  ],
+  "author": "JoyWT",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EnjoyWT/vite-plugin-vue-store-router/issues"
+  },
+  "homepage": "https://github.com/EnjoyWT/vite-plugin-vue-store-router#readme",
+  "dependencies": {
+    "@rollup/plugin-virtual": "^2.0.3"
+  }
+}
