@@ -2,11 +2,11 @@
  * @Author: JoyWT
  * @Date: 2021-04-02 16:57:11
  * @LastEditors: JoyWT
- * @LastEditTime: 2021-04-07 16:51:11
+ * @LastEditTime: 2021-04-21 10:57:11
  * @version: 1.0
  * @Description: 
 -->
-## vite-plugin-store-router
+## vite-plugin-vue-store-router
 自动注册store 和router的一个插件，目前会根据src/store 和src/router路径下的文件  
 夹名称自动注册。
 
@@ -66,7 +66,7 @@ export default {
 ##### 1.vite.config.js文件中注册组件
 
 ```
-import viteAutoRoute from 'vite-plugin-store-router'
+import viteAutoRoute from 'vite-plugin-vue-store-router'
 
 module.exports = {
     plugins: [
@@ -79,7 +79,7 @@ module.exports = {
 ##### 2.在main.js文件中直接引入store和router
 
 ```
-import {router,store}  from 'vite-plugin-store-router'
+import {router,store}  from 'vite-plugin-vue-store-router'
 new Vue({
     store,
     router,
