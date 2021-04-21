@@ -2,7 +2,7 @@
  * @Author: JoyWT
  * @Date: 2021-04-02 17:03:44
  * @LastEditors: JoyWT
- * @LastEditTime: 2021-04-21 08:50:35
+ * @LastEditTime: 2021-04-21 10:45:38
  * @version: 0.0.1
  * @Description: 
  */
@@ -12,10 +12,22 @@
 var fs = require('fs')
 var path = require('path');
 const virtual = require('@rollup/plugin-virtual')
+function filterFile(basePath,items) {
+    var result  = []
+    items.map(item => {
+        let temp = path.join(basePath, item);
+        if( fs.statSync(temp).isDirectory() ){
+            result.push( item ); 
+        }
+    });
+    return result;
+}
 function parseAutoRouterComp(option) {
 
-    const files = fs.readdirSync(path.resolve('./src/router/pc')).filter((f) => option.filters.indexOf(f) === -1 && !f.startsWith("."))
-        .map((f) => ({ name: f.split('.')[0], importPath: path.resolve("./") + `/src/router/pc/${f}/index.js` }))
+    const basePath = './src/router/pc';
+    const paths = fs.readdirSync(path.resolve(basePath));
+    const files = filterFile(basePath,paths).filter((f) => option.filters.indexOf(f) === -1 && !f.startsWith("."))
+        .map((f) => ({ name: f.split('.')[0], importPath: path.resolve(basePath) + `/${f}/index.js` }))
 
   
     const rImports = files.map((f) => `import ${f.name} from '${f.importPath}'`)
@@ -35,8 +47,10 @@ function parseAutoRouterComp(option) {
     return { rImports, routes }
 }
 function parseAutoStoreComp(option) {
-    const files = fs.readdirSync(path.resolve('./src/store/pc')).filter((f) => option.filters.indexOf(f) === -1 && !f.startsWith("."))
-        .map((f) => ({ name: f.split('.')[0], importPath: path.resolve("./") + `/src/store/pc/${f}/store.js` }))
+    const basePath = './src/store/pc';
+    const paths = fs.readdirSync(path.resolve(basePath));
+    const files = filterFile(basePath,paths).filter((f) => option.filters.indexOf(f) === -1 && !f.startsWith("."))
+        .map((f) => ({ name: f.split('.')[0], importPath: path.resolve(basePath) + `/${f}/store.js` }))
 
     const sImports = files.map((f) => `import ${f.name}s from '${f.importPath}'`)
 
